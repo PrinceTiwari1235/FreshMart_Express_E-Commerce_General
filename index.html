@@ -19,7 +19,7 @@
           extend: {
             colors: {
               primary: "#3b82f6",
-              secondary: "#le40af",
+              secondary: "#243c5a",
             },
           },
         },
@@ -97,18 +97,54 @@
       </div>
     </header>
     <main>
-      <section class="w-full h-screen">
-        <div class="container mx-auto px-4 py-12">
+      <section
+        class="bg-gradient-to-r from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900"
+      >
+        <div class="container mx-auto px-4 py-12 lg:px-20">
           <!-- Hero content -->
-          <div>
-            <div>content</div>
-            <div>
-              <img src="#" alt="" />
+          <div class="flex flex-col md:flex-row items-center gap-5">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+              <h1
+                class="text-4xl md:text-5xl font-bold text-gray-400 mb-4 dark:text-gray-200"
+              >
+                Innovative <span class="text-primary">Techno</span> Products
+              </h1>
+              <p class="text-gray-600 dark:text-gray-300 text-lg mb-4">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Quaerat omnis cumque alias eum molestias dolorum impedit minima
+                animi quibusdam. Dolor?
+              </p>
+              <div class="flex space-x-4">
+                <button
+                  class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary font-medium transition duration-300"
+                >
+                  Shop Now
+                </button>
+                <button
+                  class="border-2 border-secondary text-secondary px-6 py-2 rounded-lg hover:bg-secondary dark:text-white dark:border-primary dark:hover:bg-primary hover:text-white font-medium transition duration-300"
+                >
+                  Learn more
+                </button>
+              </div>
+            </div>
+            <div class="md:w-1/2">
+              <img
+                class="rounded-2xl shadow-lg h-80 object-cover"
+                src="/images/hero-image.jpg"
+                alt="Lady holding phone"
+              />
             </div>
           </div>
         </div>
       </section>
-      <section class="w-full h-screen">Features: Why Choose Us</section>
+
+      <section>
+        <div class="container mx-auto py-4 px-12 "></div>
+        <h2  class="text-center text-3x font-bold text-gray-800 dark:text-gray-200 mb-12">Why Shop With Us</h2>
+        <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+          <i class="fas fa-shipping-fast"></i>
+        </div>
+      </section>
       <section class="w-full h-screen bg-slate-200">Popluar Products</section>
       <section class="w-full h-screen bg-blue-500">Best Seller</section>
       <section class="w-full h-screen">Mobile Phones</section>
