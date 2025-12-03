@@ -32,14 +32,14 @@
     >
       Notice
     </div>
-    <header class="w-full bg-white dark:bg-gray-900 sticky top-0 shadow">
+    <header class="w-full bg-white dark:bg-gray-900 sticky top-0 shadow z-50">
       <div class="container mx-auto py-3 px-4">
         <div class="flex justify-between items-center">
           <h1 class="text-xl font-semibold text-primary">
             <a href="#">Techno</a>
           </h1>
           <!-- Navbar -->
-          <nav class="hidden md:flex gap-5 z-10">
+          <nav class="hidden md:flex gap-5">
             <ul class="flex gap-5">
               <a
                 href="#"
@@ -97,6 +97,7 @@
       </div>
     </header>
     <main>
+      <!-- hero section -->
       <section
         class="py-12 bg-gradient-to-r from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900"
       >
@@ -137,7 +138,7 @@
           </div>
         </div>
       </section>
-
+      <!-- about section  -->
       <section class="dark:bg-gray-700 p-12">
         <div class="container mx-auto px-4"></div>
         <h2
@@ -196,14 +197,25 @@
           </div>
         </div>
       </section>
+      <!-- featured product section  -->
       <section class="p-12 dark:bg-gray-900 bg-gray-50">
         <div class="container mx-auto px-4">
+          <div class="flex items-center justify-between mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 dark:text-gray-200">
+              Popular Products
+            </h2>
+            <a
+              href="#"
+              class="text-primary hover:text-red-800 dark:hover:text-white"
+              >See all</a
+            >
+          </div>
           <div
-            class="grid grid-cols1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols4 gap-6"
+            class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6"
           >
             <!-- card 1   -->
             <div
-              class="bg-white rounded-xl shadow-md overflow-hidden hover:translate-y-1 transition duration-300"
+              class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:translate-y-1 transition duration-300"
             >
               <div class="relative">
                 <img
@@ -217,7 +229,9 @@
                 >
               </div>
               <div class="p-4">
-                <h3 class="font-semibold text-lg text-gray-800 mb-1">
+                <h3
+                  class="font-semibold text-lg text-gray-800 dark:text-gray-200 mb-1"
+                >
                   Iphone 17 Pro Max
                 </h3>
                 <div class="flex mb-2 items-center">
@@ -232,7 +246,8 @@
                 </div>
                 <div class="flex justify-between items-center">
                   <div class="">
-                    <span class="text-lg font-semibold text-gray-800"
+                    <span
+                      class="text-lg font-semibold text-gray-800 dark:text-gray-200"
                       >$999</span
                     >
                     <span class="text-sm text-gray-500 line-through ml-1"
@@ -249,7 +264,7 @@
             </div>
             <!-- card 2 -->
             <div
-              class="bg-white rounded-xl shadow-md overflow-hidden hover:translate-y-1 transition duration-300"
+              class="bg-white rounded-xl dark:bg-gray-800 shadow-md overflow-hidden hover:translate-y-1 transition duration-300"
             >
               <div class="relative">
                 <img
@@ -263,8 +278,10 @@
                 >
               </div>
               <div class="p-4">
-                <h3 class="font-semibold text-lg text-gray-800 mb-1">
-                  Iphone 17 Pro Max
+                <h3
+                  class="font-semibold text-lg text-gray-800 dark:text-gray-200 mb-1"
+                >
+                  Wireless Headphone
                 </h3>
                 <div class="flex mb-2 items-center">
                   <div class="flex text-yellow-500">
@@ -272,17 +289,18 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half"></i>
                   </div>
-                  <span class="text-sm ml-2 text-gray-500"> (265) </span>
+                  <span class="text-sm ml-2 text-gray-500"> (25) </span>
                 </div>
                 <div class="flex justify-between items-center">
                   <div class="">
-                    <span class="text-lg font-semibold text-gray-800"
-                      >$999</span
+                    <span
+                      class="text-lg font-semibold text-gray-800 dark:text-gray-200"
+                      >$399</span
                     >
                     <span class="text-sm text-gray-500 line-through ml-1"
-                      >$1299</span
+                      >$599</span
                     >
                   </div>
                   <button
@@ -295,11 +313,11 @@
             </div>
             <!-- Card 3 -->
             <div
-              class="bg-white rounded-xl shadow-md overflow-hidden hover:translate-y-1 transition duration-300"
+              class="bg-white rounded-xl dark:bg-gray-800 shadow-md overflow-hidden hover:translate-y-1 transition duration-300"
             >
               <div class="relative">
                 <img
-                  src="https://images.unsplash.com/photo-1759588071814-f960ed8f7ee8?q=80&w=800"
+                  src="https://images.unsplash.com/photo-1579586337278-3befd40fd17a?q=80&w=800"
                   alt=""
                   class="w-full h-48 object-cover"
                 />
@@ -309,8 +327,10 @@
                 >
               </div>
               <div class="p-4">
-                <h3 class="font-semibold text-lg text-gray-800 mb-1">
-                  Iphone 17 Pro Max
+                <h3
+                  class="font-semibold text-lg text-gray-800 dark:text-gray-200 mb-1"
+                >
+                  Apple Watch
                 </h3>
                 <div class="flex mb-2 items-center">
                   <div class="flex text-yellow-500">
@@ -320,15 +340,16 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                   </div>
-                  <span class="text-sm ml-2 text-gray-500"> (265) </span>
+                  <span class="text-sm ml-2 text-gray-500"> (59) </span>
                 </div>
                 <div class="flex justify-between items-center">
                   <div class="">
-                    <span class="text-lg font-semibold text-gray-800"
-                      >$999</span
+                    <span
+                      class="text-lg font-semibold text-gray-800 dark:text-gray-200"
+                      >$899</span
                     >
                     <span class="text-sm text-gray-500 line-through ml-1"
-                      >$1299</span
+                      >$999</span
                     >
                   </div>
                   <button
@@ -341,11 +362,11 @@
             </div>
             <!-- card 4 -->
             <div
-              class="bg-white rounded-xl shadow-md overflow-hidden hover:translate-y-1 transition duration-300"
+              class="bg-white rounded-xl dark:bg-gray-800 shadow-md overflow-hidden hover:translate-y-1 transition duration-300"
             >
               <div class="relative">
                 <img
-                  src="https://images.unsplash.com/photo-1759588071814-f960ed8f7ee8?q=80&w=800"
+                  src="https://images.unsplash.com/photo-1738830246146-599b67d009db?q=80&w=800"
                   alt=""
                   class="w-full h-48 object-cover"
                 />
@@ -355,8 +376,10 @@
                 >
               </div>
               <div class="p-4">
-                <h3 class="font-semibold text-lg text-gray-800 mb-1">
-                  Iphone 17 Pro Max
+                <h3
+                  class="font-semibold text-lg text-gray-800 dark:text-gray-200 mb-1"
+                >
+                  Samsung S25 Ultra
                 </h3>
                 <div class="flex mb-2 items-center">
                   <div class="flex text-yellow-500">
@@ -366,15 +389,16 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                   </div>
-                  <span class="text-sm ml-2 text-gray-500"> (265) </span>
+                  <span class="text-sm ml-2 text-gray-500"> (866) </span>
                 </div>
                 <div class="flex justify-between items-center">
                   <div class="">
-                    <span class="text-lg font-semibold text-gray-800"
-                      >$999</span
+                    <span
+                      class="text-lg font-semibold text-gray-800 dark:text-gray-200"
+                      >$899</span
                     >
                     <span class="text-sm text-gray-500 line-through ml-1"
-                      >$1299</span
+                      >$1199</span
                     >
                   </div>
                   <button
@@ -388,7 +412,14 @@
           </div>
         </div>
       </section>
-      <section class="w-full h-screen bg-blue-500">Best Seller</section>
+      <!-- best seller section  -->
+      <section class="p-12 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+          <div class="bg-gradient-to-r from-blue-500 to-indigo-600 p-10 rounded-2xl shadow-xl overflow-hidden">
+            
+          </div>
+        </div>
+      </section>
       <section class="w-full h-screen">Mobile Phones</section>
       <section class="w-full h-screen bg-slate-200">Form</section>
       <section class="w-full h-screen bg-blue-500">CTA</section>
