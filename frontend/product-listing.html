@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop All Products - FreshMart</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          fontFamily: {
+            sans: ['"Lato", sans-serif'],
+          },
+          extend: {
+            colors: {
+              primary: "#009E48",
+              secondary: "#0091D4",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body class="light bg-gray-50">
+    <!-- Christmas Banner -->
+    <div
+      class="w-full text-center text-sm font-bold text-blue-800 bg-green-500"
+    >
+      <marquee>🎅🎄 Special Christmas Discount On All Products! 🎁✨</marquee>
+    </div>
+
+    <!-- Header -->
+    <header class="w-full bg-white dark:bg-gray-900 sticky top-0 shadow z-50">
+      <div class="container mx-auto py-3 px-4">
+        <div class="flex items-center justify-between">
+          <!-- Logo -->
+          <h1 class="text-xl font-semibold text-secondary">
+            <a href="index.html">
+              <i class="fa-solid fa-cart-shopping"></i> FreshMart
+            </a>
+          </h1>
+
+          <!-- Navbar -->
+          <nav class="hidden md:flex gap-5">
+            <a
+              href="index.html"
+              class="text-gray-700 font-bold hover:text-secondary dark:text-gray-300 dark:hover:text-secondary"
+              >Home</a
+            >
+            <a
+              href="#"
+              class="text-gray-700 font-bold hover:text-secondary dark:text-gray-300 dark:hover:text-secondary"
+              >About</a
+            >
+            <a
+              href="#"
+              class="text-gray-700 font-bold hover:text-secondary dark:text-gray-300 dark:hover:text-secondary"
+              >Products & Services</a
+            >
+            <a
+              href="#"
+              class="text-gray-700 font-bold hover:text-secondary dark:text-gray-300 dark:hover:text-secondary"
+              >Contact</a
+            >
+            <a
+              href="#"
+              class="text-gray-700 font-bold hover:text-secondary dark:text-gray-300 dark:hover:text-secondary"
+              >Join Us</a
+            >
+          </nav>
+
+          <!-- Search Bar -->
+          <div class="flex items-center">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input
+              type="search"
+              placeholder="Search Products"
+              class="px-2 py-2 text-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <!-- Icons -->
+          <div class="flex items-center gap-2">
+            <button
+              onclick="toggleCart()"
+              class="text-gray-700 p-1 dark:text-gray-300 hover:text-secondary relative"
+            >
+              <i class="fas fa-shopping-cart text-xl"></i>
+              <span
+                class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center"
+                >3</span
+              >
+            </button>
+            <button
+              class="text-gray-700 p-1 dark:text-gray-300 hover:text-secondary"
+            >
+              <i class="fas fa-user"></i>
+            </button>
+            <button
+              class="text-gray-700 hover:text-secondary p-1 dark:text-gray-300"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <!-- Page Title -->
+      <h1 class="text-3xl font-extrabold tracking-tight text-gray-900 mb-8">
+        Shop All Products
+      </h1>
+
+      <!-- Category Filter Pills -->
+      <div class="mb-12">
+        <h2 class="text-xl text-secondary font-semibold mb-3">
+          Shop by Category
+        </h2>
+        <div class="flex flex-wrap gap-4">
+          <a
+            href="#"
+            class="px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold hover:bg-secondary transition"
+            >Food</a
+          >
+          <a
+            href="#"
+            class="px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold hover:bg-secondary transition"
+            >Lifestyle</a
+          >
+          <a
+            href="#"
+            class="px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold hover:bg-secondary transition"
+            >Frozen</a
+          >
+          <a
+            href="#"
+            class="px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold hover:bg-secondary transition"
+            >Liquors</a
+          >
+          <a
+            href="#"
+            class="px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold hover:bg-secondary transition"
+            >Bakery</a
+          >
+          <a
+            href="#"
+            class="px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold hover:bg-secondary transition"
+            >Essentials</a
+          >
+        </div>
+      </div>
+
+      <!-- Main Grid: Sidebar + Products -->
+      <div class="lg:grid lg:grid-cols-4 lg:gap-x-8">
+        <!-- Sidebar - Filters (Desktop Only) -->
+        <aside class="hidden lg:block lg:col-span-1">
+          <div class="bg-white p-6 rounded-lg shadow-sm sticky top-24">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">
+              Filter Products
+            </h3>
+
+            <!-- Category Filters -->
+            <div class="border-b border-gray-200 pb-4 mb-4">
+              <h4 class="text-sm font-semibold mb-2">Categories</h4>
+              <div class="space-y-2">
+                <label
+                  class="flex items-center space-x-2 text-sm text-gray-700 cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    checked
+                    class="rounded text-primary focus:ring-primary"
+                  />
+                  <span>Food (120)</span>
+                </label>
+                <label
+                  class="flex items-center space-x-2 text-sm text-gray-700 cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    class="rounded text-primary focus:ring-primary"
+                  />
+                  <span>Lifestyle (85)</span>
+                </label>
+                <label
+                  class="flex items-center space-x-2 text-sm text-gray-700 cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    class="rounded text-primary focus:ring-primary"
+                  />
+                  <span>Liquors (40)</span>
+                </label>
+                <label
+                  class="flex items-center space-x-2 text-sm text-gray-700 cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    class="rounded text-primary focus:ring-primary"
+                  />
+                  <span>Frozen (30)</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Price Range Filters -->
+            <div class="pb-4">
+              <h4 class="text-sm font-semibold mb-3">Price Range</h4>
+              <div class="space-y-2">
+                <label
+                  class="flex items-center space-x-2 text-sm text-gray-700 cursor-pointer"
+                >
+                  <input
+                    type="radio"
+                    name="price"
+                    checked
+                    class="text-primary focus:ring-primary"
+                  />
+                  <span>$0 - $50</span>
+                </label>
+                <label
+                  class="flex items-center space-x-2 text-sm text-gray-700 cursor-pointer"
+                >
+                  <input
+                    type="radio"
+                    name="price"
+                    class="text-primary focus:ring-primary"
+                  />
+                  <span>$50 - $100</span>
+                </label>
+                <label
+                  class="flex items-center space-x-2 text-sm text-gray-700 cursor-pointer"
+                >
+                  <input
+                    type="radio"
+                    name="price"
+                    class="text-primary focus:ring-primary"
+                  />
+                  <span>Over $100</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Products Grid -->
+        <div class="lg:col-span-3">
+          <!-- Results Info & Sort -->
+          <div class="flex justify-between items-center mb-6">
+            <p class="text-sm text-gray-600 hidden sm:block">
+              Showing 1 to 12 of 275 results
+            </p>
+
+            <div class="flex items-center space-x-4">
+              <button
+                class="lg:hidden p-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100 transition"
+              >
+                <i class="fas fa-filter"></i>
+              </button>
+
+              <select
+                class="block appearance-none bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded-md leading-tight focus:outline-none focus:ring-primary focus:border-primary transition"
+              >
+                <option>Sort by: Featured</option>
+                <option>Price: Low to High</option>
+                <option>Price: High to Low</option>
+                <option>Newest Arrivals</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Product Cards Grid -->
+          <div
+            class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8"
+          >
+            <!-- Product Card 1 -->
+            <a href="product-detail.html" class="group">
+              <div
+                class="bg-blue-200 dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:-translate-y-1 transition duration-300"
+              >
+                <div class="relative">
+                  <img
+                    src="https://images.unsplash.com/photo-1553909489-cd47e0907980?q=80&w=725&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Chicken Sandwich"
+                    class="w-full h-48 object-cover"
+                  />
+                  <span
+                    class="absolute top-3 right-3 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded-xl"
+                  >
+                    30% Off
+                  </span>
+                </div>
+                <div class="p-4">
+                  <h3
+                    class="font-semibold text-md text-gray-800 dark:text-gray-100 mb-1"
+                  >
+                    Chicken Sandwich
+                  </h3>
+                  <div class="flex mb-2 items-center">
+                    <div class="flex text-yellow-500">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="text-sm ml-2 text-gray-500">(300)</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <div>
+                      <span
+                        class="text-lg font-semibold text-gray-800 dark:text-gray-100"
+                        >$15</span
+                      >
+                      <span class="text-sm text-gray-500 line-through ml-1"
+                        >$30</span
+                      >
+                    </div>
+                    <button
+                      class="bg-primary text-white hover:bg-secondary px-2 py-1.5 rounded-full"
+                    >
+                      <i class="fas fa-shopping-cart"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- Product Card 2 -->
+            <a href="product-detail1.html" class="group">
+              <div
+                class="bg-blue-200 dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:-translate-y-1 transition duration-300"
+              >
+                <div class="relative">
+                  <img
+                    src="https://images.unsplash.com/photo-1694066880221-526e16d078ce?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Freshly Baked Buns"
+                    class="w-full h-48 object-cover"
+                  />
+                  <span
+                    class="absolute top-3 right-3 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded-xl"
+                  >
+                    30% Off
+                  </span>
+                </div>
+                <div class="p-4">
+                  <h3
+                    class="font-semibold text-md text-gray-800 dark:text-gray-100 mb-1"
+                  >
+                    Freshly Baked Buns
+                  </h3>
+                  <div class="flex mb-2 items-center">
+                    <div class="flex text-yellow-500">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="text-sm ml-2 text-gray-500">(300)</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <div>
+                      <span
+                        class="text-lg font-semibold text-gray-800 dark:text-gray-100"
+                        >$15</span
+                      >
+                      <span class="text-sm text-gray-500 line-through ml-1"
+                        >$30</span
+                      >
+                    </div>
+                    <button
+                      class="bg-primary text-white hover:bg-secondary px-2 py-1.5 rounded-full"
+                    >
+                      <i class="fas fa-shopping-cart"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- Product Card 3 -->
+            <a href="#" class="group">
+              <div
+                class="bg-blue-200 dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:-translate-y-1 transition duration-300"
+              >
+                <div class="relative">
+                  <img
+                    src="https://images.unsplash.com/photo-1664052224705-e272eed9338f?q=80&w=918&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Freshly made Acai Bowl"
+                    class="w-full h-48 object-cover"
+                  />
+                  <span
+                    class="absolute top-3 right-3 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded-xl"
+                  >
+                    30% Off
+                  </span>
+                </div>
+                <div class="p-4">
+                  <h3
+                    class="font-semibold text-md text-gray-800 dark:text-gray-100 mb-1"
+                  >
+                    Freshly made Acai Bowl
+                  </h3>
+                  <div class="flex mb-2 items-center">
+                    <div class="flex text-yellow-500">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="text-sm ml-2 text-gray-500">(300)</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <div>
+                      <span
+                        class="text-lg font-semibold text-gray-800 dark:text-gray-100"
+                        >$15</span
+                      >
+                      <span class="text-sm text-gray-500 line-through ml-1"
+                        >$30</span
+                      >
+                    </div>
+                    <button
+                      class="bg-primary text-white hover:bg-secondary px-2 py-1.5 rounded-full"
+                    >
+                      <i class="fas fa-shopping-cart"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- Product Card 4 -->
+            <a href="#" class="group">
+              <div
+                class="bg-blue-200 dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:-translate-y-1 transition duration-300"
+              >
+                <div class="relative">
+                  <img
+                    src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=465&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Chocolate Chip Cookies"
+                    class="w-full h-48 object-cover"
+                  />
+                  <span
+                    class="absolute top-3 right-3 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded-xl"
+                  >
+                    30% Off
+                  </span>
+                </div>
+                <div class="p-4">
+                  <h3
+                    class="font-semibold text-md text-gray-800 dark:text-gray-100 mb-1"
+                  >
+                    Chocolate Chip Cookies
+                  </h3>
+                  <div class="flex mb-2 items-center">
+                    <div class="flex text-yellow-500">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="text-sm ml-2 text-gray-500">(866)</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <div>
+                      <span
+                        class="text-lg font-semibold text-gray-800 dark:text-gray-100"
+                        >$30</span
+                      >
+                      <span class="text-sm text-gray-500 line-through ml-1"
+                        >$15</span
+                      >
+                    </div>
+                    <button
+                      class="bg-primary text-white hover:bg-secondary px-2 py-1.5 rounded-full"
+                    >
+                      <i class="fas fa-shopping-cart"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- Product Card 5 -->
+            <a href="#" class="group">
+              <div
+                class="bg-blue-200 dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:-translate-y-1 transition duration-300"
+              >
+                <div class="relative">
+                  <img
+                    src="https://images.unsplash.com/photo-1553909489-cd47e0907980?q=80&w=725&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Chicken Sandwich"
+                    class="w-full h-48 object-cover"
+                  />
+                  <span
+                    class="absolute top-3 right-3 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded-xl"
+                  >
+                    30% Off
+                  </span>
+                </div>
+                <div class="p-4">
+                  <h3
+                    class="font-semibold text-md text-gray-800 dark:text-gray-100 mb-1"
+                  >
+                    Chicken Sandwich
+                  </h3>
+                  <div class="flex mb-2 items-center">
+                    <div class="flex text-yellow-500">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="text-sm ml-2 text-gray-500">(300)</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <div>
+                      <span
+                        class="text-lg font-semibold text-gray-800 dark:text-gray-100"
+                        >$15</span
+                      >
+                      <span class="text-sm text-gray-500 line-through ml-1"
+                        >$30</span
+                      >
+                    </div>
+                    <button
+                      class="bg-primary text-white hover:bg-secondary px-2 py-1.5 rounded-full"
+                    >
+                      <i class="fas fa-shopping-cart"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- Product Card 6 -->
+            <a href="#" class="group">
+              <div
+                class="bg-blue-200 dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:-translate-y-1 transition duration-300"
+              >
+                <div class="relative">
+                  <img
+                    src="https://images.unsplash.com/photo-1694066880221-526e16d078ce?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Freshly Baked Buns"
+                    class="w-full h-48 object-cover"
+                  />
+                  <span
+                    class="absolute top-3 right-3 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded-xl"
+                  >
+                    30% Off
+                  </span>
+                </div>
+                <div class="p-4">
+                  <h3
+                    class="font-semibold text-md text-gray-800 dark:text-gray-100 mb-1"
+                  >
+                    Freshly Baked Buns
+                  </h3>
+                  <div class="flex mb-2 items-center">
+                    <div class="flex text-yellow-500">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="text-sm ml-2 text-gray-500">(300)</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <div>
+                      <span
+                        class="text-lg font-semibold text-gray-800 dark:text-gray-100"
+                        >$15</span
+                      >
+                      <span class="text-sm text-gray-500 line-through ml-1"
+                        >$30</span
+                      >
+                    </div>
+                    <button
+                      class="bg-primary text-white hover:bg-secondary px-2 py-1.5 rounded-full"
+                    >
+                      <i class="fas fa-shopping-cart"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Pagination -->
+          <div class="mt-12 flex justify-center">
+            <nav class="flex items-center gap-2">
+              <button
+                class="px-3 py-2 border border-gray-300 rounded-md hover:bg-gray-100 disabled:opacity-50"
+                disabled
+              >
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="px-4 py-2 bg-primary text-white rounded-md">
+                1
+              </button>
+              <button
+                class="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-100"
+              >
+                2
+              </button>
+              <button
+                class="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-100"
+              >
+                3
+              </button>
+              <button
+                class="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-100"
+              >
+                4
+              </button>
+              <button
+                class="px-3 py-2 border border-gray-300 rounded-md hover:bg-gray-100"
+              >
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Cart Overlay -->
+    <div
+      id="cartOverlay"
+      onclick="toggleCart()"
+      class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"
+    ></div>
+
+    <!-- Cart Sidebar -->
+    <div
+      id="cartSidebar"
+      class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-50 flex flex-col transform translate-x-full transition-transform duration-300"
+    >
+      <!-- Cart Header -->
+      <div
+        class="flex items-center justify-between p-6 border-b border-gray-200 bg-primary"
+      >
+        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+          <i class="fas fa-shopping-cart"></i>
+          Shopping Cart
+        </h2>
+        <button
+          onclick="toggleCart()"
+          class="text-white hover:text-gray-200 transition-colors"
+        >
+          <i class="fas fa-times text-2xl"></i>
+        </button>
+      </div>
+
+      <!-- Cart Items -->
+      <div class="flex-1 overflow-y-auto p-6 bg-gray-50">
+        <!-- Cart Item 1 -->
+        <div
+          class="flex gap-4 pb-4 mb-4 border-b border-gray-300 bg-white p-3 rounded-lg shadow-sm"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1553909489-cd47e0907980?w=200&h=200&fit=crop"
+            alt="Product"
+            class="w-20 h-20 object-cover rounded-lg"
+          />
+          <div class="flex-1">
+            <h3 class="font-bold text-gray-900">Chicken Sandwich</h3>
+            <p class="text-sm text-gray-500">Fresh & Delicious</p>
+            <div class="flex items-center gap-2 mt-2">
+              <span class="text-lg font-bold text-primary">$15.00</span>
+              <span class="text-sm text-gray-400 line-through">$30.00</span>
+            </div>
+          </div>
+          <div class="flex flex-col items-end gap-3">
+            <button class="text-red-500 hover:text-red-700 transition-colors">
+              <i class="fas fa-trash text-lg"></i>
+            </button>
+            <div
+              class="flex items-center gap-1 border-2 border-gray-300 rounded-md bg-white"
+            >
+              <button
+                class="px-2 py-1 hover:bg-gray-100 transition-colors text-gray-700"
+              >
+                <i class="fas fa-minus"></i>
+              </button>
+              <span class="w-10 text-center font-bold text-gray-900">2</span>
+              <button
+                class="px-2 py-1 hover:bg-gray-100 transition-colors text-gray-700"
+              >
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cart Item 2 -->
+        <div
+          class="flex gap-4 pb-4 mb-4 border-b border-gray-300 bg-white p-3 rounded-lg shadow-sm"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1694066880221-526e16d078ce?w=200&h=200&fit=crop"
+            alt="Product"
+            class="w-20 h-20 object-cover rounded-lg"
+          />
+          <div class="flex-1">
+            <h3 class="font-bold text-gray-900">Freshly Baked Buns</h3>
+            <p class="text-sm text-gray-500">Soft & Warm</p>
+            <div class="flex items-center gap-2 mt-2">
+              <span class="text-lg font-bold text-primary">$15.00</span>
+              <span class="text-sm text-gray-400 line-through">$30.00</span>
+            </div>
+          </div>
+          <div class="flex flex-col items-end gap-3">
+            <button class="text-red-500 hover:text-red-700 transition-colors">
+              <i class="fas fa-trash text-lg"></i>
+            </button>
+            <div
+              class="flex items-center gap-1 border-2 border-gray-300 rounded-lg bg-white"
+            >
+              <button
+                class="px-3 py-1 hover:bg-gray-100 transition-colors text-gray-700"
+              >
+                <i class="fas fa-minus"></i>
+              </button>
+              <span class="w-10 text-center font-bold text-gray-900">1</span>
+              <button
+                class="px-3 py-1 hover:bg-gray-100 transition-colors text-gray-700"
+              >
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cart Item 3 -->
+        <div
+          class="flex gap-4 pb-4 mb-4 border-b border-gray-300 bg-white p-3 rounded-lg shadow-sm"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1664052224705-e272eed9338f?w=200&h=200&fit=crop"
+            alt="Product"
+            class="w-20 h-20 object-cover rounded-lg"
+          />
+          <div class="flex-1">
+            <h3 class="font-bold text-gray-900">Acai Bowl</h3>
+            <p class="text-sm text-gray-500">Healthy & Fresh</p>
+            <div class="flex items-center gap-2 mt-2">
+              <span class="text-lg font-bold text-primary">$15.00</span>
+              <span class="text-sm text-gray-400 line-through">$30.00</span>
+            </div>
+          </div>
+          <div class="flex flex-col items-end gap-3">
+            <button class="text-red-500 hover:text-red-700 transition-colors">
+              <i class="fas fa-trash text-lg"></i>
+            </button>
+            <div
+              class="flex items-center gap-1 border-2 border-gray-300 rounded-lg bg-white"
+            >
+              <button
+                class="px-3 py-1 hover:bg-gray-100 transition-colors text-gray-700"
+              >
+                <i class="fas fa-minus"></i>
+              </button>
+              <span class="w-10 text-center font-bold text-gray-900">1</span>
+              <button
+                class="px-3 py-1 hover:bg-gray-100 transition-colors text-gray-700"
+              >
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cart Summary -->
+      <div class="border-t-2 border-gray-300 p-6 bg-white shadow-lg">
+        <div class="space-y-3 mb-5">
+          <div class="flex justify-between text-gray-700 text-base">
+            <span class="font-medium">Subtotal</span>
+            <span class="font-bold">$45.00</span>
+          </div>
+          <div class="flex justify-between text-gray-700 text-base">
+            <span class="font-medium">Tax (10%)</span>
+            <span class="font-bold">$4.50</span>
+          </div>
+          <div class="flex justify-between text-gray-700 text-base">
+            <span class="font-medium">Shipping</span>
+            <span class="font-bold text-green-600">FREE</span>
+          </div>
+          <div
+            class="border-t-2 border-gray-400 pt-3 flex justify-between text-2xl font-bold text-gray-900"
+          >
+            <span>Total</span>
+            <span class="text-primary">$49.50</span>
+          </div>
+        </div>
+
+        <button
+          class="w-full bg-primary text-white py-4 rounded-lg font-bold text-lg hover:bg-secondary transition-colors shadow-md mb-3"
+        >
+          <i class="fas fa-lock mr-2"></i>Proceed to Checkout
+        </button>
+
+        <button
+          onclick="toggleCart()"
+          class="w-full bg-gray-200 text-gray-800 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors border-2 border-gray-300"
+        >
+          <i class="fas fa-arrow-left mr-2"></i>
+          Continue Shopping
+        </button>
+      </div>
+    </div>
+
+    <script>
+      function toggleCart() {
+        const sidebar = document.getElementById("cartSidebar");
+        const overlay = document.getElementById("cartOverlay");
+
+        sidebar.classList.toggle("translate-x-full");
+        overlay.classList.toggle("hidden");
+      }
+    </script>
+  </body>
+</html>
