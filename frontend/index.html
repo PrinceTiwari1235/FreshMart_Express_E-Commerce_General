@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FreshMart-Neighbourhood Groceries Store</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        fontFamily: {
+          sans: ['"Lato ", sans-serif'],
+        },
+        extend: {
+          colors: {
+            primary: "#009E48",
+            secondary: "#0091D4"
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+
+<body class="light">
+  <div class="w-full text-center text-sm font-bold text-blue-800 bg-green-500">
+    <marquee>🎅🎄 Special Christmas Discount On All Products! 🎁✨</marquee>
+  </div>
+
+  <header class="w-full bg-white dark:bg-gray-900 sticky top-0 shadow z-50">
+    <div class="container mx-auto py-3 px-4">
+      <div class="flex items-center justify-between">   
+
+          <!-- Logo  -->
+          <h1 class=" text-xl font-semibold text-secondary">
+        <a href="#"> <i class="fa-solid fa-cart-shopping"></i> FreshMart </a>
+        </h1>
+
+        <!-- Navbar -->
+        <nav class="hidden md:flex gap-5">
+          <a href="#"
+            class="text-gray-700 font-bold hover:text-secondary dark:text-gray-300 dark:hover:text-secondary">Home</a>
+          <a href="#"
+            class="text-gray-700 font-bold hover:text-secondary dark:text-gray-300 dark:hover:text-secondary">About
+          </a>
+          <a href="#"
+            class="text-gray-700 font-bold hover:text-secondary dark:text-gray-300 dark:hover:text-secondary">Products &
+            Services</a>
+          <a href="#"
+            class="text-gray-700 font-bold hover:text-secondary dark:text-gray-300 dark:hover:text-secondary">Contact</a>
+          <a href="#"
+            class="text-gray-700 font-bold hover:text-secondary dark:text-gray-300 dark:hover:text-secondary">Join
+            Us</a>
+        </nav>
+
+        <div class="flex items-center">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="search" placeholder="Search Products"
+            class="px-2 py-2 text-gray-500 rounded-1-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+
+        <div class="flex items-center">
+         <button onclick="toggleCart()" class="text-gray-700 p-1 dark:text-gray-300 hover:text-secondary relative">
+            <i class="fas fa-shopping-cart text-xl"></i>
+            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">3</span>
+          </button>
+
+          <button class="text-gray-700 p-1 dark:text-gray-300 hover:text-secondary">
+            <i class="fas fa-user"></i>
+          </button>
+          <button class="block text-gray-700 hover:text-secondary p-1 dark:text-gray-300">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+  </header>
+  
+  <main>
+    <!-- Hero section -->
+    <section class="py-12 md:py-15 bg-gradient-to-r from-blue-200 to-indigo-100 dark:from-gray-800 dark:to-gray-900">
+      <div class="container mx-auto px-4">
+        <!-- Hero content -->
+        <div class="flex flex-col md:flex-row items-center gap-5">
+          <div class="md:w-1/2 mb-8 md:mb-0">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4 dark:text-gray-200">
+              <div class="text-secondary pl-20">
+                <a href="#"> <i class="fa-solid fa-cart-shopping"></i> FreshMart </a>
+              </div>
+              <br> Shop Smart <br> <span class="text-primary pl-28"> Eat Fresh </span>
+            </h1>
+            <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+              Save time and money with FreshMart, your neighborhood general store. Enjoy fresh food, great prices, and
+              fast, reliable delivery. Shop Smart, Eat Fresh!"
+            </p>
+
+            <div class="flex space-x-4">
+              <button
+                class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary font-medium transition duration-300">
+                <a href="#popular-items"> Popular Items</a>
+              </button>
+
+              <div class="relative" id="dropdownButton">
+                <div onclick="toggleDropdown()"
+                  class="border-solid bg-primary border-[1px] bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary font-medium transition duration-300px-5 py-2 rounded cursor-pointer font-bold fle justify-between w-[130px]">
+                  Categories
+                </div>
+
+                <div id="dropdown"
+                  class="rounded border-[1px] bg-white py-2 absolute top-[50px] w-[200px] shadow-md hidden">
+                  <div class="cursor-pointer bg:primary hover:bg-secondary p-1">Food</div>
+                  <div class="cursor-pointer bg:primary hover:bg-secondary p-1">Lifestyle</div>
+                  <div class="cursor-pointer bg:primary hover:bg-secondary p-1">Liquors</div>
+                  <div class="cursor-pointer bg:primary hover:bg-secondary p-1">Frozen</div>
+                  <div class="cursor-pointer bg:primary hover:bg-secondary p-1">Bakery</div>
+                  <div class="cursor-pointer bg:primary hover:bg-secondary p-1">Essentials</div>
+                </div>
+              </div>
+
+              <script>
+                function toggleDropdown() {
+                  let dropdown = document.querySelector('#dropdownButton #dropdown');
+                  dropdown.classList.toggle("hidden");
+                }
+              </script>
+
+              <button
+                class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary font-medium transition duration-300">
+                <a href="#popular-items"> Be a Member</a>
+              </button>
+            </div>
+          </div>
+
+          <div class="md:w-1/2 flex justify-center">
+            <div class="relative w-full max-w-md">
+              <div class="absolute -left-4 -top-4 w-full h-full bg-primary/20 rounded-2xl"></div>
+              <img class="rounded-2xl shadow-lg object-cover relative"
+                src="https://images.unsplash.com/photo-1628102491629-778571d893a3?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- Popular Items section -->
+  <section id="popular-items" class="dark:bg-gray-800 py-12">
+    <div class="container mx-auto px-4">
+      <!-- <div class="flex items-center justify-center mb-8"> -->
+        <h2 class="text-3xl font-bold text-center text-gray-800 dark:text-gray-300">
+          Popular Items
+        </h2>
+        <a href="./product-listing.html" class="text-primary hover:text-secondary">View all</a>
+      <!-- </div> -->
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6">
+        <!-- Card  -->
+        <a href="./product-detail.html">
+        <div
+          class="bg-blue-200 dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:-translate-y-1 transition duration-300">
+          <div class="relative">
+            <img
+              src="https://images.unsplash.com/photo-1553909489-cd47e0907980?q=80&w=725&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="" class="w-full h-48 object-cover" />
+            <span class="absolute top-3 right-3 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded-xl">
+              30% Off
+            </span>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-md text-gray-800 dark:text-gray-100 mb-1">
+              Chicken Sandwich
+            </h3>
+            <div class="flex mb-2 items-center">
+              <div class="flex text-yellow-500">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span class="text-sm ml-2 text-gray-500">(300)</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <div>
+                <span class="text-lg font-semibold text-gray-800 dark:text-gray-100">$15</span>
+                <span class="text-sm text-gray-500 line-through ml-1">$30</span>
+              </div>
+              <button class="bg-primary text-white hover:bg-secondary px-2 py-1.5 rounded-full">
+                <i class="fas fa-shopping-cart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        </a>
+
+        <!-- Card  -->
+        <a href="./product-detail1.html">
+        <div
+          class="bg-blue-200 dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:-translate-y-1 transition duration-300">
+          <div class="relative">
+            <img
+              src="https://images.unsplash.com/photo-1694066880221-526e16d078ce?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="" class="w-full h-48 object-cover" />
+            <span class="absolute top-3 right-3 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded-xl">
+              30% Off
+            </span>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-md text-gray-800 dark:text-gray-100 mb-1">
+              Freshly Baked Buns
+            </h3>
+            <div class="flex mb-2 items-center">
+              <div class="flex text-yellow-500">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span class="text-sm ml-2 text-gray-500">(300)</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <div>
+                <span class="text-lg font-semibold text-gray-800 dark:text-gray-100">$15</span>
+                <span class="text-sm text-gray-500 line-through ml-1">$30</span>
+              </div>
+              <button class="bg-primary text-white hover:bg-secondary px-2 py-1.5 rounded-full">
+                <i class="fas fa-shopping-cart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        </a>
+
+        <!-- Card  -->
+        <div
+          class="bg-blue-200 dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:-translate-y-1 transition duration-300">
+          <div class="relative">
+            <img
+              src="https://images.unsplash.com/photo-1667204651371-5d4a65b8b5a9?q=80&w=416&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="" class="w-full h-48 object-cover" />
+            <span class="absolute top-3 right-3 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded-xl">
+              30% Off
+            </span>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-md text-gray-800 dark:text-gray-100 mb-1">
+              Coca Cola Original
+            </h3>
+            <div class="flex mb-2 items-center">
+              <div class="flex text-yellow-500">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span class="text-sm ml-2 text-gray-500 dark:">(300)</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <div>
+                <span class="text-lg font-semibold text-gray-800 dark:text-gray-100">$10</span>
+                <span class="text-sm text-gray-500 line-through ml-1">$20</span>
+              </div>
+              <button class="bg-primary text-white hover:bg-secondary px-2 py-1.5 rounded-full">
+                <i class="fas fa-shopping-cart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card  -->
+        <div
+          class="bg-blue-200 dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:-translate-y-1 transition duration-300">
+          <div class="relative">
+            <img
+              src="https://images.unsplash.com/photo-1624517452488-04869289c4ca?q=80&w=503&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="" class="w-full h-48 object-cover" />
+            <span class="absolute top-3 right-3 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded-xl">
+              30% Off
+            </span>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-md text-gray-800 dark:text-gray-100 mb-1">
+              Fanta Orange Zero
+            </h3>
+            <div class="flex mb-2 items-center">
+              <div class="flex text-yellow-500">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half"></i>
+              </div>
+              <span class="text-sm ml-2 text-gray-500">(200)</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <div>
+                <span class="text-lg font-semibold text-gray-800 dark:text-gray-100">$10</span>
+                <span class="text-sm text-gray-500 line-through ml-1">$20</span>
+              </div>
+              <button class="bg-primary text-white hover:bg-secondary px-2 py-1.5 rounded-full">
+                <i class="fas fa-shopping-cart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card  -->
+        <div
+          class="bg-blue-200 dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:-translate-y-1 transition duration-300">
+          <div class="relative">
+            <img
+              src="https://images.unsplash.com/photo-1664052224705-e272eed9338f?q=80&w=918&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="" class="w-full h-48 object-cover" />
+            <span class="absolute top-3 right-3 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded-xl">
+              30% Off
+            </span>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-md text-gray-800 dark:text-gray-100 mb-1">
+              Freshly made Acai Bowl
+            </h3>
+            <div class="flex mb-2 items-center">
+              <div class="flex text-yellow-500">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span class="text-sm ml-2 text-gray-500">(300)</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <div>
+                <span class="text-lg font-semibold text-gray-800 dark:text-gray-100">$15</span>
+                <span class="text-sm text-gray-500 line-through ml-1">$30</span>
+              </div>
+              <button class="bg-primary text-white hover:bg-secondary px-2 py-1.5 rounded-full">
+                <i class="fas fa-shopping-cart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card  -->
+        <div
+          class="bg-blue-200 dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:-translate-y-1 transition duration-300">
+          <div class="relative">
+            <img
+              src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=465&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="" class="w-full h-48 object-cover" />
+            <span class="absolute top-3 right-3 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded-xl">
+              30% Off
+            </span>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-md text-gray-800 dark:text-gray-100 mb-1">
+              Chocolate Chip Cookies
+            </h3>
+            <div class="flex mb-2 items-center">
+              <div class="flex text-yellow-500">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span class="text-sm ml-2 text-gray-500">(866)</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <div>
+                <span class="text-lg font-semibold text-gray-800 dark:text-gray-100">$30</span>
+                <span class="text-sm text-gray-500 line-through ml-1">$15s</span>
+              </div>
+              <button class="bg-primary text-white hover:bg-secondary px-2 py-1.5 rounded-full">
+                <i class="fas fa-shopping-cart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why choose us section -->
+
+  <section class="dark:bg-gray-800 py-12">
+    <div class="container mx-auto px-4">
+      <h2 class="text-center text-3xl font-bold text-gray-800 dark:text-gray-200 mb-12">
+        Why Choose Us?
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-6 gap-8">
+        <div
+          class="bg-green-200 flex flex-col items-center text-center dark:bg-gray-900 p-6 rounded-xl shadow-sm hover:shadow transition duration-300">
+          <div class="bg-primary/10 rounded-full flex items-center justify-center h-16 w-16 mb-4">
+            <i class="fa-solid fa-seedling text-2xl text-secondary"></i>
+          </div>
+          <h3>Fresh Produce</h3>
+        </div>
+
+        <div
+          class="bg-green-200 flex flex-col items-center text-center dark:bg-gray-900 p-6 rounded-xl shadow-sm hover:shadow transition duration-300">
+          <div class="bg-primary/10 rounded-full flex items-center justify-center h-16 w-16 mb-4">
+            <i class="fas fa-shipping-fast text-2xl text-secondary"></i>
+          </div>
+          <h2>Fast Delivery</h2>
+        </div>
+
+        <div
+          class="bg-green-200 flex flex-col items-center text-center dark:bg-gray-900 p-6 rounded-xl shadow-sm hover:shadow transition duration-300">
+          <div class="bg-primary/10 rounded-full flex items-center justify-center h-16 w-16 mb-4">
+            <i class="fa-solid fa-hand-holding-dollar text-2xl text-secondary"></i>
+          </div>
+          <h2>Great Value of Money</h2>   
+        </div>
+
+        <div
+          class="bg-green-200 flex flex-col items-center text-center dark:bg-gray-900 p-6 rounded-xl shadow-sm hover:shadow transition duration-300">
+          <div class="bg-primary/10 rounded-full flex items-center justify-center h-16 w-16 mb-4">
+            <i class="fa-solid fa-ship text-2xl text-secondary"></i>
+          </div>
+          <h3>Free Shipping</h3>
+        </div>
+
+        <div
+          class="bg-green-200 flex flex-col items-center text-center dark:bg-gray-900 p-6 rounded-xl shadow-sm hover:shadow transition duration-300">
+            <div class="bg-primary/10 rounded-full flex items-center justify-center h-16 w-16 mb-4">
+              <i class="fa-solid fa-lock text-2xl text-secondary"></i>
+            </div>
+              <h3> Secure Payment
+              </h3>
+        </div>
+
+        <div
+          class="bg-green-200 flex flex-col items-center text-center dark:bg-gray-900 p-6 rounded-xl shadow-sm hover:shadow transition duration-300">
+          <div class="bg-primary/10 rounded-full flex items-center justify-center h-16 w-16 mb-4">
+            <i class="fa-solid fa-hand-holding-hand text-2xl text-secondary"></i>
+          </div>
+          <h3> 24/7 Customer Support
+          </h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--what our customers say-->
+
+   <!--what our customers say-->
+<section class="dark:bg-gray-800 py-12">
+  <div class="container mx-auto px-4">
+    <h2 class="text-center text-3xl font-bold text-gray-800 dark:text-gray-200 mb-12">
+      What Customers Say?
+    </h2>
+
+    <div class="grid sm:grid-cols-1 md:grid-cols-4 xl-grid-cols-6 gap-6 px-12">
+   
+      <!--card-->
+      <div class="bg-blue-200 dark:bg-gray-800 shadow-md overflow-hidden">
+        <div class="relative">
+          <img src="https://plus.unsplash.com/premium_vector-1682298383653-2cb34a902292?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="" class="w-full h-48 object-cover" />
+        </div>
+        <div class="p-4">
+          <h2 class="font-bold text-xl text-gray-800 dark:text-gray-100 mb-1">
+            Homer Simpson
+          </h2>
+        </div>  
+        <div class="py-2 px-4">
+          <h3 class="font-medium text-md text-gray-800 dark:text-gray-100 mb-1">
+            "Thank you FreshMart for the good, efficient service. Your customer care skills were amazing."
+          </h3>
+        </div>
+      </div>
+      
+      <!--card-->
+      <div class="bg-blue-200 dark:bg-gray-800 shadow-md overflow-hidden">
+        <div class="relative">
+          <img src="https://plus.unsplash.com/premium_vector-1682298383653-2cb34a902292?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="" class="w-full h-48 object-cover" />
+        </div>
+        <div class="p-4">
+          <h2 class="font-bold text-xl text-gray-800 dark:text-gray-100 mb-1">
+            Marge Simpson
+          </h2>
+        </div>  
+        <div class="py-2 px-4">
+          <h3 class="font-medium text-md text-gray-800 dark:text-gray-100 mb-1">
+            "The Delivery service is great! If we don't step foot in the store, there's no temptation"          
+          </h3>
+        </div>
+      </div>
+
+      <!--card-->
+      <div class="bg-blue-200 dark:bg-gray-800 shadow-md overflow-hidden">
+        <div class="relative">
+          <img src="https://plus.unsplash.com/premium_vector-1682298383653-2cb34a902292?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="" class="w-full h-48 object-cover" />
+        </div>
+        <div class="p-4">
+          <h2 class="font-bold text-xl text-gray-800 dark:text-gray-100 mb-1">
+            Bart Simpson
+          </h2>
+        </div>  
+        <div class="py-2 px-4">
+          <h3 class="font-medium text-md text-gray-800 dark:text-gray-100 mb-1">
+            "The produce section at FreshMart is stocked daily to ensure freshness, and they have a great selection of locally sourced options."
+          </h3>
+        </div>
+      </div>
+
+      <!--card-->
+      <div class="bg-blue-200 dark:bg-gray-800 shadow-md overflow-hidden">
+        <div class="relative">
+          <img src="https://plus.unsplash.com/premium_vector-1682298383653-2cb34a902292?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="" class="w-full h-48 object-cover" />
+        </div>
+        <div class="p-4">
+          <h2 class="font-bold text-xl text-gray-800 dark:text-gray-100 mb-1">
+            Lisa Simpson
+          </h2>
+        </div>  
+        <div class="py-2 px-4">
+          <h3 class="font-medium text-md text-gray-800 dark:text-gray-100 mb-1">
+            "I was impressed with FreshMart's prices as I was able to buy double the amount of oatmeal for the same price."
+          </h3>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+  </main>
+
+  <!--Footer-->
+
+  <footer class="bg-green-200 background-primary">
+    <div class="container mx-auto py-12 px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+
+        <!--card-->
+        <div class="relative">
+        <h2 class="text-2xl text-primary">
+        <i class="fa-solid fa-phone"></i> Contact Us
+        </h2>
+        <h3 class="text-lg py-6 text-gray-800">         
+          FreshMart Pvt ltd
+        <br>
+        Tel: 015555555
+        <br>
+        Kathmandu,Nepal
+        </h3>
+
+        <div class="text-2xl">
+        <i class="fa-brands fa-facebook text-blue-600"></i>
+        <i class="fa-brands fa-instagram text-red-600"></i>
+        <i class="fa-brands fa-x-twitter"></i>
+        <i class="fa-brands fa-tiktok"></i>
+        </div>
+        </div>
+
+
+        <!--card-->
+        <div class="relative">
+        <h2 class="text-2xl text-primary">
+        <i class="fa-solid fa-bars"></i>
+        Navigation
+        </h2>
+        <div class="text-lg py-6 text-gray-800">
+          <a href=# class="hover:text-secondary">Home</a><br> 
+          <a href=# class="hover:text-secondary">About</a><br>
+          <a href=# class="hover:text-secondary">Products</a><br>
+          <a href=# class="hover:text-secondary">Blogs</a><br>
+          <a href=# class="hover:text-secondary">Contacts</a>  
+        </div>
+        </div>
+
+
+          <!--card-->
+        <div class="relative">
+        <h2 class="text-2xl text-primary">
+        <i class="fa-solid fa-people-group"></i>
+        Customer
+        </h2>
+       
+          <div class="text-lg py-6 text-gray-800">
+          <a href=# class="hover:text-secondary">Privacy Policy</a><br> 
+          <a href=# class="hover:text-secondary">Terms of Seervices</a><br>
+          <a href=# class="hover:text-secondary">Legal Policy</a><br>
+          <a href=# class="hover:text-secondary">FAQs</a><br>
+          <a href=# class="hover:text-secondary">Support Center</a>  
+        </div>
+        </div>
+        
+
+          <!--card-->
+        <div class="relative">
+        <h2 class="text-2xl text-primary">
+        <i class="fa-solid fa-coins"></i>
+        Payment
+        </h2>
+       
+          <div class="text-lg py-6 text-gray-800">
+           <div class="flex gap-2">
+              <div class="bg-white px-2 py-1 rounded">
+                <i class="fab fa-cc-visa text-2xl text-blue-800"></i>
+              </div>
+              <div class="bg-white px-2 py-1 rounded">
+                <i class="fab fa-cc-mastercard text-2xl text-red-600"></i>
+              </div>
+              <div class="bg-white px-2 py-1 rounded">
+                <i class="fab fa-cc-paypal text-2xl text-blue-600"></i>
+              </div>
+              <div class="bg-white px-2 py-1 rounded">
+                <i class="fab fa-cc-apple-pay text-2xl text-black"></i>
+              </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    <!-- Cart Overlay -->
+    <div
+      id="cartOverlay"
+      onclick="toggleCart()"
+      class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"
+    ></div>
+
+    <!-- Cart Sidebar -->
+    <div
+      id="cartSidebar"
+      class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-50 flex flex-col transform translate-x-full transition-transform duration-300"
+    >
+      <!-- Cart Header -->
+      <div
+        class="flex items-center justify-between p-6 border-b border-gray-200 bg-primary"
+      >
+        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+          <i class="fas fa-shopping-cart"></i>
+          Shopping Cart
+        </h2>
+        <button
+          onclick="toggleCart()"
+          class="text-white hover:text-gray-200 transition-colors"
+        >
+          <i class="fas fa-times text-2xl"></i>
+        </button>
+      </div>
+
+      <!-- Cart Items -->
+      <div class="flex-1 overflow-y-auto p-6 bg-gray-50">
+        <!-- Cart Item 1 -->
+        <div
+          class="flex gap-4 pb-4 mb-4 border-b border-gray-300 bg-white p-3 rounded-lg shadow-sm"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1553909489-cd47e0907980?w=200&h=200&fit=crop"
+            alt="Product"
+            class="w-20 h-20 object-cover rounded-lg"
+          />
+          <div class="flex-1">
+            <h3 class="font-bold text-gray-900">Chicken Sandwich</h3>
+            <p class="text-sm text-gray-500">Fresh & Delicious</p>
+            <div class="flex items-center gap-2 mt-2">
+              <span class="text-lg font-bold text-primary">$15.00</span>
+              <span class="text-sm text-gray-400 line-through">$30.00</span>
+            </div>
+          </div>
+          <div class="flex flex-col items-end gap-3">
+            <button class="text-red-500 hover:text-red-700 transition-colors">
+              <i class="fas fa-trash text-lg"></i>
+            </button>
+            <div
+              class="flex items-center gap-1 border-2 border-gray-300 rounded-md bg-white"
+            >
+              <button
+                class="px-2 py-1 hover:bg-gray-100 transition-colors text-gray-700"
+              >
+                <i class="fas fa-minus"></i>
+              </button>
+              <span class="w-10 text-center font-bold text-gray-900">2</span>
+              <button
+                class="px-2 py-1 hover:bg-gray-100 transition-colors text-gray-700"
+              >
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cart Item 2 -->
+        <div
+          class="flex gap-4 pb-4 mb-4 border-b border-gray-300 bg-white p-3 rounded-lg shadow-sm"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1694066880221-526e16d078ce?w=200&h=200&fit=crop"
+            alt="Product"
+            class="w-20 h-20 object-cover rounded-lg"
+          />
+          <div class="flex-1">
+            <h3 class="font-bold text-gray-900">Freshly Baked Buns</h3>
+            <p class="text-sm text-gray-500">Soft & Warm</p>
+            <div class="flex items-center gap-2 mt-2">
+              <span class="text-lg font-bold text-primary">$15.00</span>
+              <span class="text-sm text-gray-400 line-through">$30.00</span>
+            </div>
+          </div>
+          <div class="flex flex-col items-end gap-3">
+            <button class="text-red-500 hover:text-red-700 transition-colors">
+              <i class="fas fa-trash text-lg"></i>
+            </button>
+            <div
+              class="flex items-center gap-1 border-2 border-gray-300 rounded-lg bg-white"
+            >
+              <button
+                class="px-3 py-1 hover:bg-gray-100 transition-colors text-gray-700"
+              >
+                <i class="fas fa-minus"></i>
+              </button>
+              <span class="w-10 text-center font-bold text-gray-900">1</span>
+              <button
+                class="px-3 py-1 hover:bg-gray-100 transition-colors text-gray-700"
+              >
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cart Item 3 -->
+        <div
+          class="flex gap-4 pb-4 mb-4 border-b border-gray-300 bg-white p-3 rounded-lg shadow-sm"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1664052224705-e272eed9338f?w=200&h=200&fit=crop"
+            alt="Product"
+            class="w-20 h-20 object-cover rounded-lg"
+          />
+          <div class="flex-1">
+            <h3 class="font-bold text-gray-900">Acai Bowl</h3>
+            <p class="text-sm text-gray-500">Healthy & Fresh</p>
+            <div class="flex items-center gap-2 mt-2">
+              <span class="text-lg font-bold text-primary">$15.00</span>
+              <span class="text-sm text-gray-400 line-through">$30.00</span>
+            </div>
+          </div>
+          <div class="flex flex-col items-end gap-3">
+            <button class="text-red-500 hover:text-red-700 transition-colors">
+              <i class="fas fa-trash text-lg"></i>
+            </button>
+            <div
+              class="flex items-center gap-1 border-2 border-gray-300 rounded-lg bg-white"
+            >
+              <button
+                class="px-3 py-1 hover:bg-gray-100 transition-colors text-gray-700"
+              >
+                <i class="fas fa-minus"></i>
+              </button>
+              <span class="w-10 text-center font-bold text-gray-900">1</span>
+              <button
+                class="px-3 py-1 hover:bg-gray-100 transition-colors text-gray-700"
+              >
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cart Summary -->
+      <div class="border-t-2 border-gray-300 p-6 bg-white shadow-lg">
+        <div class="space-y-3 mb-5">
+          <div class="flex justify-between text-gray-700 text-base">
+            <span class="font-medium">Subtotal</span>
+            <span class="font-bold">$45.00</span>
+          </div>
+          <div class="flex justify-between text-gray-700 text-base">
+            <span class="font-medium">Tax (10%)</span>
+            <span class="font-bold">$4.50</span>
+          </div>
+          <div class="flex justify-between text-gray-700 text-base">
+            <span class="font-medium">Shipping</span>
+            <span class="font-bold text-green-600">FREE</span>
+          </div>
+          <div
+            class="border-t-2 border-gray-400 pt-3 flex justify-between text-2xl font-bold text-gray-900"
+          >
+            <span>Total</span>
+            <span class="text-primary">$49.50</span>
+          </div>
+        </div>
+
+        <button
+          class="w-full bg-primary text-white py-4 rounded-lg font-bold text-lg hover:bg-secondary transition-colors shadow-md mb-3"
+        >
+          <i class="fas fa-lock mr-2"></i>Proceed to Checkout
+        </button>
+
+        <button
+          onclick="toggleCart()"
+          class="w-full bg-gray-200 text-gray-800 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors border-2 border-gray-300"
+        >
+          <i class="fas fa-arrow-left mr-2"></i>
+          Continue Shopping
+        </button>
+      </div>
+    </div>
+
+    <script>
+      function toggleCart() {
+        const sidebar = document.getElementById("cartSidebar");
+        const overlay = document.getElementById("cartOverlay");
+
+        sidebar.classList.toggle("translate-x-full");
+        overlay.classList.toggle("hidden");
+      }
+    </script>
+  </body>
+</html>
