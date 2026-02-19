@@ -2,43 +2,40 @@
 
 import mongoose from 'mongoose';
 
-const categorySchema = new mongoose.Schema(
-  {
-    name: {
-      type: String,
-      required: [true, 'Category name is required'],
-      trim: true,
-      unique: true,
-      maxlength: [100, 'Category name cannot exceed 100 characters'],
-    },
-    slug: {
-      type: String,
-      required: true,
-      unique: true,
-      lowercase: true,
-      trim: true,
-    },
-    description: {
-      type: String,
-      required: [true, 'Category description is required'],
-      trim: true,
-      maxlength: [500, 'Description cannot exceed 500 characters'],
-    },
-    image: {
-      type: String,
-      required: [true, 'Category image is required'],
-      trim: true,
-    },
-    parentCategory: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Category',
-      default: null,
-    },
+const categorySchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: [true, 'Category name is required'],
+    trim: true,
+    unique: true,
+    maxlength: [100, 'Category name cannot exceed 100 characters']
   },
-  {
-    timestamps: true, //automatically ceate createdAt and updatedAt
+  slug: {
+    type: String,
+    required: true,
+    unique: true,
+    lowercase: true,
+    trim: true
+  },
+  description: {
+    type: String,
+    required: [true, 'Category description is required'],
+    trim: true,
+    maxlength: [500, 'Description cannot exceed 500 characters']
+  },
+  image: {
+    type: String,
+    required: [true, 'Category image is required'],
+    trim: true
+  },
+  parentCategory: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Category',
+    default: null
   }
-);
+}, {
+  timestamps: true, //automatically ceate createdAt and updatedAt
+});
 
 // Indexes for performance
 categorySchema.index({ slug: 1 }, { unique: true }); // Unique and fast lookup for URLs ascending

@@ -2,12 +2,26 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+
+import path from 'path';
+import { fileURLToPath } from 'url';
+import fs from 'fs';
+
+
 import productRoutes from './src/routes/productRoutes.js';
 import categoryRoutes from './src/routes/categoryRoutes.js';
+
+import uploadRoutes from './src/routes/uploadRoutes.js';
+
 import errorHandler from './src/middleware/errorHandler.js';
+
 
 // Load environment variables
 dotenv.config();
+
+// Get __dirname equivalent in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Initialize Express app
 const app = express();
@@ -21,6 +35,7 @@ app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(process.env.MONGODB_URI, {
+      // These options are no longer needed in Mongoose 6+, but included for compatibility
       // useNewUrlParser: true,
       // useUnifiedTopology: true,
     });
@@ -37,6 +52,8 @@ connectDB();
 // API Routes
 app.use('/api/products', productRoutes);
 app.use('/api/categories', categoryRoutes);
+
+app.use('/api/uploads', uploadRoutes);
 
 // Health check route
 app.get('/', (req, res) => {
