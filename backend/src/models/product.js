@@ -88,6 +88,17 @@ const productSchema = new mongoose.Schema(
       required: [true, 'Product price is required'],
       min: [0, 'Price cannot be negative'],
     },
+    // OPTIONAL: Add discount field (can skip this if you don't need it yet)
+    // discount: {
+    //   type: {
+    //     type: String,
+    //     enum: ['percentage', 'fixed'],
+    //   },
+    //   value: {
+    //     type: Number,
+    //     min: 0,
+    //   },
+    // },
     images: {
       type: [String],
       required: [true, 'At least one product image is required'],
@@ -116,7 +127,7 @@ const productSchema = new mongoose.Schema(
     ratings: {
       type: [ratingSchema],
       default: [],
-    },
+    }
   },
   {
     timestamps: true, // automatically creates createAt, updatedAt fields

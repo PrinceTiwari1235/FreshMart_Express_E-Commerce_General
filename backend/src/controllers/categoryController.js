@@ -1,7 +1,9 @@
 import Category from '../models/category.js';
 import mongoose from 'mongoose';
 
-// GET /api/categories
+// @desc    Get all categories
+// @route   GET /api/categories
+// @access  Public
 export const getAllCategories = async (req, res) => {
   try {
     // const categories = await Category.sort({ name: -1 });
@@ -21,10 +23,12 @@ export const getAllCategories = async (req, res) => {
   }
 };
 
-// POST /api/categories
+// @desc    Create a new category
+// @route   POST /api/categories
+// @access  Private/Admin
 export const createCategory = async (req, res) => {
   try {
-    const { name, slug, description, image } = req.body;
+    const { name, slug, description, image} = req.body;
 
     // Validation
     if (!name) {
@@ -48,7 +52,7 @@ export const createCategory = async (req, res) => {
       name,
       slug,
       description,
-      image,
+      image
     });
 
     res.status(201).json({
@@ -82,7 +86,9 @@ export const createCategory = async (req, res) => {
   }
 };
 
-// PUT /api/categories/:id
+// @desc    Update category
+// @route   PUT /api/categories/:id
+// @access  Private/Admin
 export const updateCategory = async (req, res) => {
   try {
     const { id } = req.params;
@@ -117,10 +123,14 @@ export const updateCategory = async (req, res) => {
     }
 
     // Update category
-    category = await Category.findByIdAndUpdate(id, req.body, {
-      new: true, // Return updated document
-      runValidators: true, // Run schema validators
-    });
+    category = await Category.findByIdAndUpdate(
+      id,
+      req.body,
+      {
+        new: true, // Return updated document
+        runValidators: true, // Run schema validators
+      }
+    );
 
     res.status(200).json({
       success: true,
